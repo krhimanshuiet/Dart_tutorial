@@ -1,3 +1,53 @@
+// asynchronous programming using Future , await , async , then apiS
+
+
+import 'dart:async';
+
+void main(){
+  
+  print("Main program:Starts");
+  
+  printFileContent();
+  
+  printFileContentString();
+  
+  
+  print("Main Program:Ends");
+  
+  
+  
+}
+
+
+printFileContentString() async {
+  String fileContent = await downloadFileContent();
+  
+  print('The downloded string is --> $fileContent');
+}
+
+
+printFileContent() {
+  Future<String> fileContent =  downloadFileContent();
+  
+  fileContent.then((resultString){
+    print('The content of the file is  --> $resultString');
+  });
+
+  
+}
+
+
+Future<String> downloadFileContent(){
+  
+  Future<String> result = Future.delayed(Duration(seconds:6),(){
+    
+    return "My name is file content";
+    
+  });
+  
+  return result;
+}
+
 
 // 1 day
 //entry point in dart -  main() function
